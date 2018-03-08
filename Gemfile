@@ -34,7 +34,8 @@ gem 'kaminari'
 gem 'kaminari-bootstrap'
 
 #Paperclip image post
-gem 'paperclip', '~> 4.1'
+gem 'paperclip', '~> 5.2.0'
+
 
 #AmazonS3, storage picture
 gem 'aws-sdk', '< 2.0'
