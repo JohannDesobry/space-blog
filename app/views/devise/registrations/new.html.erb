@@ -1,0 +1,53 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+<div class="section">
+    <div class="columns">
+        <div class="column is-6 is-offset-3">
+            <div class="box" style="padding: 2.5rem;">
+                <div style="text-align: center;">
+                    <h3 class="title is-3" style="margin-bottom: 2rem;">
+                        <span class="content">Welcome !</span>
+                    </h3>
+                </div>
+                <form>
+                    <div class="field">
+                        <div>
+                            <div class="control">
+                                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input", placeholder:'Email' %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div>
+                            <div class="control">
+                            <% if @minimum_password_length %>
+                           <em>(<%= @minimum_password_length %> characters minimum)</em>
+                            <% end %>
+                            <%= f.password_field :password, autocomplete: "off", class:"input", placeholder:"Password" %>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="field">
+                        <div>
+                            <div class="control">
+                            <% if @minimum_password_length %>
+                           <em>(<%= @minimum_password_length %> characters minimum)</em>
+                            <% end %>
+                            <%= f.password_field :password_confirmation, autocomplete: "off", class:"input", placeholder:"Password" %>
+                            </div>
+                        </div>
+                    </div>
+                        <%= f.submit "Sign up", class:"button is-primary", style:"font-weight: bold; width: 100%; margin-top: 1.25rem;" %>
+                </form>
+                <div class="other-links">
+                    <p>
+                    <%= render "devise/shared/links" %>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<% end %>

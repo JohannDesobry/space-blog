@@ -1,0 +1,35 @@
+    <div class="columns">
+        <div class="column">
+            <div class="item">
+            <%= image_tag(@post.avatar.url(:medium)) %>
+            <div class="item-content">
+                <div class="level">
+                    <div class="level-left">
+                        <h2 class="title item-title"><%= @post.title %></h2>
+                        <span><%= content_tag(:small, link_to('Edit this article', edit_post_path(@post), class:"edit-btn button is-success is-large")) if @post.user == current_user %></span>
+                    </div>
+                    <div class="item-author button">Posted at <%= @post.created_at.strftime("%H:%M:%S") %> by <%= @post.user.email %></div>
+                </div>
+                <div class="item-description">
+                <p class="article-body"><%= @post.body %></p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>Comment</h3>
+
+    <ul class="comments">
+        <% @post.comments.each do |p| %>
+                <li>
+                    <p><%= p.body %></p>
+                </li>
+                    <div class="item-author button">Posted at <%= p.created_at.strftime("%H:%M:%S") %> by <%= p.user.email %></div>
+                 <% if current_user.id === p.user.id || @post.user.id === current_user.id %>
+                    <span class='button is-danger com-delete'><%= link_to t("delete_comment"), comment_path(p.id), method: :delete, data: { confirm: ('Are you sure you want to delete your comment ?') } %></span>
+                <% end %>
+        <% end %>
+    </ul>
+
+    <%= render partial: 'comments/form', locals: { comment: @comment } %>

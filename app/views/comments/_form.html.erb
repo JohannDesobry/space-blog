@@ -1,0 +1,13 @@
+<%= form_for [@comment, Comment.new] do |f| %>
+    <div class="form-group">
+        <h3 class="title comment-title">Add a comment</h3>
+        <%= f.text_area :body, class: 'form-control textarea', rows: 6, placeholder: "Insert your comment here" %>
+    </div>
+
+    <%= f.hidden_field :post_id, value: @post.id %>
+    <% if user_signed_in? %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+    <% end %>
+    <%= f.submit 'Save', class: 'button is-link buttonbs' %>
+
+<% end %>

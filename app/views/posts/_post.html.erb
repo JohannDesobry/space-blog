@@ -1,0 +1,14 @@
+            <div class="item article-user">
+                <%= link_to post_path(post.id) do %>
+             <%= image_tag(post.avatar.url(:medium), class:"user-article-photo item-figure image is2by1") %>
+                     <% end %>
+            <div class="item-content">
+                <div class="level">
+                    <h2 class="title item-title"><%= link_to truncate(post.title, :length => 80), post_path(post.id) %></h2>
+                </div>
+                <div class="item-description">
+                <p class="blog-body"><%= truncate(post.body, :length => 200) %></p>
+                  <%= link_to t('Read'), post_path(post.id), class: "article__link" %>
+                </div>
+            </div>
+            </div>

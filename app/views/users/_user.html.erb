@@ -1,0 +1,15 @@
+<div class="columns">
+    <div class="column">
+        <div class="item">
+              <%= link_to image_tag("https://api.adorable.io/avatars/285/spaced.png"), user_path(user.id), class: "user-avatar" %>
+            <div class="item-content">
+                <div class="level">
+                   <h2 class="title item-title" style="margin-bottom: 0rem;"><%= user.email %></h2>
+                </div>
+                <div class="item-description">
+                <%= link_to t('View user articles'), user_path(user.id), class: "about__link is-primary" %> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

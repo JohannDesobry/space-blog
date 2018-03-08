@@ -1,0 +1,35 @@
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+<div class="section">
+    <div class="columns">
+        <div class="column is-6 is-offset-3">
+            <div class="box" style="padding: 2.5rem;">
+                <div style="text-align: center;">
+                    <h3 class="title is-3" style="margin-bottom: 2rem;">
+                        <span class="content">Forgot your password ?</span>
+                    </h3>
+                </div>
+                <form>
+                    <div class="field">
+                        <div>
+                            <div class="control">
+                                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input", placeholder:'Email' %>
+                            </div>
+                        </div>
+                    </div>
+                        <%= f.submit "Send me the reset instructions", class:"button is-primary", style:"font-weight: bold; width: 100%; margin-top: 1.25rem;" %>
+                </form>
+                <div class="other-links">
+                    <p>
+                    <%= render "devise/shared/links" %>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<% end %>
+

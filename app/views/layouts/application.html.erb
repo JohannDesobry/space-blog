@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Spaced Blog</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        <%= csrf_meta_tags %>
+        <%= favicon_link_tag 'icon.png' %>
+    </head>
+    <body>
+
+        <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %> alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <%= value %>
+        </div>
+        <% end %>
+
+    <div class="hero-head">
+        <header class="nav has-shadow">
+            <div class="container">
+                <div class="nav-left">
+                        <%= link_to image_tag("logo.png"), root_path, class: "is-logo" %>
+                </div>
+                <span class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <div class="nav-right nav-menu">
+                 <% if current_user %>
+                           <%= link_to 'Logout', destroy_user_session_path, class:"nav-item", method: :delete %>
+                          <span class="nav-item"> <%= link_to 'Users', users_path, class:"nav-item" %></span>
+                          <span class="nav-item"> <%= link_to 'New post', new_post_path, class:"button is-primary" %></span>
+                         <% else %>
+                            <span class="nav-item"> <%= link_to 'Users', users_path, class:"nav-item" %></span>
+                            <%= link_to 'Login', new_user_session_path, class:"nav-item" %>
+                         <% end %>
+                </div>
+            </div>
+        </header>
+    </div>
+
+          <div class="container">
+              <%= yield %>
+          </div>
+
+
+    </body>
+</html>

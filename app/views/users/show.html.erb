@@ -1,0 +1,19 @@
+<div class="columns">
+    <div class="column">
+        <div class="item">
+              <%= link_to image_tag("https://api.adorable.io/avatars/285/spaced.png"), users_path, class:"user-avatar" %>
+            <div class="item-content">
+                <div class="level">
+                   <h2><%= @user.email %></h2>
+                   <h2 class="title item-title"><%= @posts.count %> articles published</h2>
+                </div>
+            </div>
+        </div>
+         <% if @posts.count > 0 %>
+        <div class="articles">
+          <%= render @posts %>
+        </div>
+        <% else %>
+          <h2></h2>
+        <% end %>
+</div>
